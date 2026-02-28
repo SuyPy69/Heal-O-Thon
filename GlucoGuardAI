@@ -1,0 +1,71 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+# 1. Page Configuration
+st.set_page_config(page_title="GlucoGuard AI", page_icon="🩺", layout="wide")
+
+# 2. Data Loading & Pre-processing (Medical Informatics)
+@st.cache_data
+def load_data():
+    df = pd.read_csv('diabetes.csv')
+    # Critical Hack: In medical data, 0 often means 'Missing'. Replace with Median.
+    cols_to_fix = ['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']
+    for col in cols_to_fix:
+        df[col] = df[col].replace(0, df[col].median())
+    return df
+
+df = load_data()
+
+# 3. Model Training (Random Forest for high accuracy)
+X = df.drop('Outcome', axis=1)
+y = df['Outcome']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+
+# 4. User Interface
+st.title("🩺 GlucoGuard: Predictive Medical Informatics")
+st.markdown("---")
+
+col1, col2 = st.columns([1, 2])
+
+with col1:
+    st.header("Patient Vitals")
+    glucose = st.slider("Glucose Level (mg/dL)", 50, 200, 120)
+    bmi = st.number_input("Enter BMI", 10.0, 50.0, 25.0)
+    age = st.slider("Age", 18, 100, 30)
+    bp = st.slider("Blood Pressure", 50, 140, 80)
+    insulin = st.slider("Insulin Level", 0, 800, 30)
+    
+    predict_btn = st.button("Generate Risk Assessment", type="primary")
+
+with col2:
+    if predict_btn:
+        # Format input for prediction
+        # (Pregnancies=0, Glu, BP, Skin=20, Insulin, BMI, Pedigree=0.5, Age)
+        user_input = [[0, glucose, bp, 20, insulin, bmi, 0.5, age]]
+        prediction = model.predict(user_input)
+        prob = model.predict_proba(user_input)[0][1] * 100
+        
+        st.subheader("Diagnostic Result")
+        if prediction[0] == 1:
+            st.error(f"🚨 HIGH RISK DETECTED ({prob:.1f}%)")
+            st.warning("**Recommended Diet Plan (High Protein/Low GI):**")
+            st.write("- **Breakfast:** Oats with walnuts & flaxseeds.")
+            st.write("- **Lunch:** Sprouts salad with grilled paneer/chicken.")
+            st.write("- **Activity:** Brisk walk for 25 mins daily.")
+        else:
+            st.success(f"✅ LOW RISK DETECTED ({prob:.1f}%)")
+            st.write("**Maintenance Diet Plan:**")
+            st.write("- Focus on whole grains and leafy greens.")
+            st.write("- Maintain current activity levels.")
+
+    else:
+        st.info("👈 Fill in the patient vitals and click 'Generate' to see the AI prediction and diet plan.")
+        # Visualizing the Data Relationship
+        st.subheader("Informatics Insight: Glucose vs BMI")
+        st.scatter_chart(df[['Glucose', 'BMI']])
