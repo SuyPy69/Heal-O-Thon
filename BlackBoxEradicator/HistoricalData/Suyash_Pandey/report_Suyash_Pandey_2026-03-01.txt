@@ -1,0 +1,6 @@
+Patient name: Suyash Pandey
+Age: 18.5
+Issue: Skin becoming flaky, no moisture
+--> eyes becoming dry
+--> lungs burning
+--> Meningitis

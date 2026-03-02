@@ -1,0 +1,3 @@
+Patient Name: Jane Smith
+Date: 2026-03-01
+Patient presents with a temperature of 102F, a resting heart rate of 115 BPM, and oxygen saturation at 91%. Needs immediate evaluation.
