@@ -1,0 +1,14 @@
+{
+  "Milk": ["Whey", "Casein", "Lactose", "Ghee", "Curds", "Milk Solids", "Butterfat", "Sodium Caseinate"],
+  "Peanut": ["Arachis", "Groundnut", "Goober", "Mungaphalee", "Peanut Flour", "Peanut Protein"],
+  "Egg": ["Albumin", "Ovoglobulin", "Livetin", "Lecithin", "Lysozyme", "Vitellin", "Mayonnaise"],
+  "Soy": ["Soya", "Edamame", "Tofu", "Miso", "Hydrolyzed Vegetable Protein", "Textured Soy Protein"],
+  "Wheat": ["Gluten", "Atta", "Maida", "Semolina", "Bulgur", "Durum", "Farina", "Spelt", "Seitan"],
+  "Tree Nuts": ["Almond", "Cashew", "Kaju", "Walnut", "Pistachio", "Pista", "Hazelnut", "Pecan", "Brazil Nut"],
+  "Shellfish": ["Prawn", "Shrimp", "Crab", "Lobster", "Clams", "Mussels", "Oyster", "Scallops"],
+  "Fish": ["Anchovies", "Cod", "Tilapia", "Surimi", "Fish Sauce", "Omega-3 (Fish Sourced)"],
+  "Sesame": ["Til", "Tahini", "Gingelly", "Sesamol", "Sesamum Indicum", "Benne"],
+  "Mustard": ["Rai", "Sarson", "Mustard Flour", "Mustard Seed", "Mustard Oil"],
+  "Sulphites": ["Sulfur Dioxide", "Sodium Bisulfite", "Potassium Metabisulfite", "E220", "E221", "E222"],
+  "Legumes": ["Chickpea", "Besan", "Lentil", "Dal", "Peas", "Lupin"]
+}
