@@ -1,4 +1,7 @@
-blood_type,stock_level,pincode,pincode_demand_index,weather_risk_index
-O+,15,560001,0.8,0.2
-A-,4,560002,0.4,0.1
-B+,22,560001,0.9,0.5
+hospital_name,blood_type,current_units,pincode,pincode_demand_index,weather_risk_index,rain_val,traffic_val
+Manipal Hospital,O+,15,560001,0.8,0.2,0.1,0.4
+Apollo Hospitals,A-,4,560002,0.4,0.1,0.0,0.2
+Fortis Hospital,B+,22,560001,0.9,0.5,0.6,0.8
+Narayana Health,O-,2,560037,0.7,0.3,0.2,0.5
+Victoria Hospital,AB+,10,560002,0.5,0.8,0.9,0.9
+Aster CMI,A+,18,560092,0.6,0.2,0.0,0.3
